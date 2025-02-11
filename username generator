@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+int validUsername(const char *username)
+{
+    int length=strlen(username);
+    if (length< 5||length>15) //checks if total lenght is 15
+    return 0;
+    if (!isalpha(username[0]))//checks if first char is string or not
+    return 0;
+    for (int i=0;i<length;i++) 
+    {
+        if (!isalnum(username[i])) //checks if alphanumeric
+        return 0;
+    }
+    return 1; //if valid
+}
+void main(){
+    char username[20];
+    printf("Enter username: ");
+    scanf("%s", username);
+    if(validUsername(username))
+    {
+        printf("Valid username\n");
+    }
+    else
+    {
+        printf("Invalid username\n");
+    }
+}
