@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+void correctText(char *text) {
+    for (int i = 0; text[i] != '\0'; i++) 
+    {
+        if (strncmp(&text[i], "hte", 3) == 0)  //replaces hte with the
+        {
+            text[i] = 't';  
+            text[i + 1] = 'h'; 
+            text[i + 2] = 'e'; 
+        }
+        else if (strncmp(&text[i], "recieve", 7) == 0) //to correct it to recieve
+        {
+            text[i + 6] = 'e'; 
+        }
+    }
+}
+int main() {
+    char text[1000];
+    printf("input text: ");
+    fgets(text, sizeof(text), stdin);
+    correctText(text);
+    printf("output: %s\n", text);
+    return 0;
+}
