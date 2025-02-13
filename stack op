@@ -1,0 +1,45 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+struct MinStack {
+    stack<int> mainStack;
+    stack<int> minStack;
+    MinStack() { 
+cout<<"null,";
+   } 
+    void push(int val) {
+        mainStack.push(val);
+        if (minStack.empty()||val<=minStack.top()) {
+            minStack.push(val);
+        }
+        cout<<"null,";
+    }
+    void pop() {
+        if (!mainStack.empty()) {
+            if (mainStack.top()==minStack.top()) {
+                minStack.pop();
+            }
+            mainStack.pop();
+        }
+        cout<<"null, ";
+    }
+
+    void top() {
+        cout<<mainStack.top()<< ",";
+    }
+    void getMin(){
+        cout<< minStack.top()<< “,";
+    }
+};
+int main() {
+    MinStack minStack;  
+    minStack.push(-2);
+    minStack.push(0);
+    minStack.push(-3);
+    minStack.getMin();   
+    minStack.pop();
+    minStack.top();    
+    minStack.getMin();   
+    cout << "]" << endl;
+    return 0;
+}
