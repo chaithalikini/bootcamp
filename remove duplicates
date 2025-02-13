@@ -1,0 +1,28 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+string isDuplicates(string str){
+    stack<char> s;  
+    for(char ch:str){
+        if (!s.empty()&&s.top()==ch){
+            s.pop();  
+        }
+        else{
+            s.push(ch);  
+        }
+    }
+    string result=" ";
+    while (!s.empty()){
+        result=s.top() + result;
+        s.pop();
+    }
+    return result;
+}
+int main(){
+    string word;
+    cout<<"Enter a string: ";
+    cin>>word;  
+    string output=isDuplicates(word);
+    cout<<"Output: "<<output;
+    return 0;
+}
