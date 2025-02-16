@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+void parentheses(string s,int left,int right,int n, vector<string>& result) {
+    if(s.length()==2*n){
+        result.push_back(s);
+        return;
+    }
+    if(left<n){
+        parentheses(s+"(",left+1,right,n,result);
+    }
+    if(right<left){
+        parentheses(s+")",left,right+1,n,result);
+    }
+}
+vector<string> generate_parentheses(int n) {
+    vector<string>result;
+    parentheses("",0,0,n,result);
+    return result;
+}
+int main(){
+    int n=3;
+    vector<string> result=generate_parentheses(n);
+    for(const string& s:result){
+        cout<<s<<endl;
+    }
+    return 0;
+}
